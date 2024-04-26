@@ -12,7 +12,7 @@ from pickle import load
 
 
 # Load the saved model
-model = xgb_classifier()
+model = XGBClassifier()
 model = load(open("test.pkl", "rb"))
 prediction = model.predict(df)
 
