@@ -14,7 +14,7 @@ from pickle import load
 # Load the saved model
 model = XGBClassifier()
 model = load(open("test.pkl", "rb"))
-prediction = model.predict(df)
+prediction = model.predict(XGBClassifier)
 
 
 # Streamlit app title
