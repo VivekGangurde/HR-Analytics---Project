@@ -8,8 +8,7 @@ import pandas as pd
 import pickle
 import streamlit as st
 import xgboost
-import xgboost.compat
-from xgboost.compat import XGBoostLabelEncoder
+from xgboost import XGBoostLabelEncoder
 
 
 
