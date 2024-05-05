@@ -156,7 +156,6 @@ def main():
     ans = round(100*ans,2)
     st.subheader('The probability of employee being Left the Company is {ans} %.')
 
-        
-    if __name__ == "__main__" :
-    main()
+if __name__ == "__main__" :
+main()
 
