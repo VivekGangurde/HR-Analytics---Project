@@ -151,7 +151,7 @@ def main():
         return inp
     
     df = input_features()
-    model = pickle.load(open("test.pkl","rb'"))
+    model = pickle.load(open("test.pkl","rb"))
     ans = model.predict_proba(df)
     ans = round(100*ans,2)
     st.subheader('The probability of employee being Left the Company is {ans} %.')
