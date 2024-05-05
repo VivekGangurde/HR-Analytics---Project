@@ -157,5 +157,4 @@ def main():
     st.subheader('The probability of employee being Left the Company is {ans} %.')
 
     
-if __name__ == "main" :
-    main()
+
