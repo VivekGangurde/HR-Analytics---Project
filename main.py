@@ -20,7 +20,7 @@ from xgboost import XGBClassifier
 
 
 # Load the saved model
-df = input_features()
+df = user_input()
 pickle_model = XGBClassifier()
 pickle_model = pickle.load(open('test.pkl','rb'))
 
