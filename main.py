@@ -83,7 +83,7 @@ input_data = [Jobsatisfaction,
               selected_dept,
               selected_salary
               ]
-
+input_data=np.array(input_data).reshape((1,-1))
 # Make predictions using the XgBoost model
 prediction = xgb_clf.predict([input_data])[0]
 
