@@ -148,10 +148,7 @@ def main():
             
         inp = [age,dept,distancefromhome,edu_field, employeenumber,env_sat, gender,job_inv,jobrole,job_sat,mar_stat,income, num_com,overtime, stocks,total_exp,training,years_com,years_role,years_man,WLB_Score]
         
-        return inp
-        
-    input_features=np.array(input_features).reshape((1,-1)) 
-    
+        return inp 
     df = input_features()
     model = pickle.load(open("test.pkl","rb"))
     ans = model.predict_proba(df)
