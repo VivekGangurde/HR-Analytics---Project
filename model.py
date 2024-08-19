@@ -85,10 +85,12 @@ def main():
         jobsat = st.selectbox('Job Satisfaction', ['Low','Medium', 'High','Very High'])
         if jobsat == "Low" :
             job_sat = 1
-        elif jobsat == "Medium" or "High" :
+        elif jobsat == "Medium" :
             job_sat = 2
+        elif jobsat == "High":
+            job_inv = 3
         else :
-            job_sat = 3
+            job_sat = 4
             
         mar = st.selectbox('Marital Status',['Married','Divorced','Single'])
         if mar == "Married" or "Divorced" :
