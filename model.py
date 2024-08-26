@@ -82,7 +82,6 @@ def main():
             jobrole = 4
         else :
             jobrole = 5
-            
         jobsat = st.selectbox('Job Satisfaction', ['Low','Medium', 'High','Very High'])
         if jobsat == "Low" :
             job_sat = 1
