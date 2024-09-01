@@ -3,6 +3,6 @@ scikit-learn
 seaborn
 matplotlib
 pandas
-pickle-mixin==1.0.2
+pickle-mixin
 xgboost
 numpy
