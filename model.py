@@ -11,7 +11,10 @@ from pickle import load
 import streamlit as st
 import xgboost
 from xgboost import XGBClassifier
-
+from pyngrok import ngrok
+ 
+public_url = ngrok.connect('8501')
+public_url
 
 
 
@@ -152,10 +155,11 @@ def main():
         inp = [age,dept,distancefromhome,edu_field, employeenumber,env_sat, gender,job_inv,jobrole,job_sat,mar_stat,income, num_com,overtime, stocks,total_exp,training,years_com,years_role,years_man,WLB_Score]
         
         return inp
-    
+    pickle_out = open("test.pkl", mode = "wb") 
+    pickle.dump(xgb_clf, pickle_out) 
+    pickle_out.close()
     df = input_features()
-    model = pickle.load(open('test.pkl','rb'))
-    ans = model.predict_proba([df])[0][0]
+    ans = xgb_clf.predict_proba([df])[0][0]
     ans = round(100*ans,2)
     st.subheader('The probability of employee being Left the Company is {ans} %.')
     
