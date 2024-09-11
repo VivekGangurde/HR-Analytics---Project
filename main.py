@@ -86,7 +86,7 @@ input_data = [Jobsatisfaction,
               ]
 
 # Make predictions using the XgBoost model
-prediction = xgb_clf.predict([input_data])[0]
+prediction = log_gs.predict([input_data])[0]
 
 # Display the prediction
 st.subheader("Employees turnover: Stay or Left")
