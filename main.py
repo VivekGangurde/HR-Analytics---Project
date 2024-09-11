@@ -14,6 +14,7 @@ from pickle import dump
 from pickle import load
 import streamlit as st
 from xgboost import XGBClassifier
+from sklearn.linear_model import LogisticRegression
 
 
 
@@ -21,8 +22,8 @@ from xgboost import XGBClassifier
 
 # Load the saved model
 
-xgb_clf = XGBClassifier()
-xgb_clf = pickle.load(open('model.pkl','rb'))
+log_gs = LogisticRegression()
+log_gs = pickle.load(open('model.pkl','rb'))
 
 
 
