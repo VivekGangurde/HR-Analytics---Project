@@ -11,6 +11,7 @@ from pickle import load
 import streamlit as st
 import sklearn as skl
 from sklearn.linear_model import LogisticRegression
+import xgboost
 
 
 
@@ -151,7 +152,7 @@ def main():
     
     df = input_features()
     log_gs = pickle.load(open('model.pkl','rb'))
-    ans = log_gs.predict_proba([df])[0][0]
+    ans = model.predict_proba([df])[0][0]
     ans = round(100*ans,2)
     st.subheader('The probability of employee being Left the Company is {ans} %.')
     
