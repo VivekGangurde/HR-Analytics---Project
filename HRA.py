@@ -205,7 +205,18 @@ def input_features() :
         else :
                     WLB_Score = 5
                 
-        inp =[input_features]
+        inp =[Age,DailyRate,DistanceFromHome,Education,employeenumber,EnvironmentSatisfaction,
+                    Gender,HourlyRate,Jobinvolvement,JoblLevel,JobSatisfaction,MonthlyIncome,MonthlyRate,
+                    NumCompaniesWorked,OverTime,PercentSalaryHike,PerformanceRating,RelationshipSatisfaction,
+                    StockOptionLevel,TotalWorkingYears,TrainingTimesLastYear,WorkLifeBalance,YearsAtCompany,
+                    YearsInCurrentRole,YearsSinceLastPromotion,YearsWithCurrManger,BusinessTravel_Non-Travel,
+                    BusinessTravel_Travel_Frequently,BusinessTravel_Travel_Rarely,Department_HumanResources,
+                    Deparment_Reseearch & Development,Department_Sales,EducationField_HumanResources,
+                    Educationfield_LifeSciences,Educationfield_Marketing,EducationField_Medical,EducationField_Other,
+                    EducationField_TechnicalDegree,JobRole_HealthcareRepresentative,JobRole_HumanResources,
+                    JobRole_LaboratoryTechnician,JobRole_Manager,JobRole_ManufacturingDirector,JobRole_ResearchDirector,
+                    JobRole_ResearchScientist,JobRole_SalesExecutive,JobRole_SalesRepresentative,MaritalStatus_Divorced,
+                    MaritalStatus_Married,MaritalStatus_Single]
 
         return inp
 
