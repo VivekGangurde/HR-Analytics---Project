@@ -158,13 +158,9 @@ def input_features() :
             
         PercentSalaryHike = st.number_input("Salary Hike %",0.,30.,step = 1.) 
 
-        PerformanceRating = st.number_input(" Performance Rating",0.,4.,step = 1.) 
-
         TotalWorkingYears = st.number_input("Total experience of employee",0.,45.,step = 1.)
 
         YearsAtCompany = st.number_input("Number of years spent in company",0.,50., step = 1.)
-
-        YearsInCurrentRole = st.number_input("Number of years in current role",0.,30., step = 1.)
 
         YearsSinceLastPromotion = st.number_input("Year Since Last Promotion",0.,20., step = 1.)
 
@@ -184,7 +180,7 @@ def input_features() :
         else :
                     WLB_Score = 5
                 
-        inp =[input_features]
+        inp =['input_features']
 
         return inp
 
