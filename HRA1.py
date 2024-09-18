@@ -25,8 +25,8 @@ def main():
     st.subheader('(Please fill in the Employee details accordingly)')
     def input_features() :
         st.sidebar.header('Sliders to change the variables.')
-        st.sidebar.slider('Age of employee', 18,65,30)
-        
+        age=st.selectbox('Age of employee', 18,65,30)
+       
         dep = st.selectbox('Department', ['Sales', 'Human Resources', 'Research & Development'])
         if dep == "Sales" or "Human Resources" :
             dept = 0
