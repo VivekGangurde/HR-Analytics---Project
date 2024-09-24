@@ -191,6 +191,7 @@ def input_features() :
         return inp
 
         df= input_features()
+        log_gs=np.array(df,dtype=float)
         model = pickle.load(open('model.pkl','rb'))
         ans = model.predict_proba([df])[0][0]
         ans = round(100*ans,2)  
