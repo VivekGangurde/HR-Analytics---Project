@@ -81,7 +81,7 @@ def main():
         else :
             JobLevel = 4
          
-        Education = st.selectbox('Job Level',['Low', 'Medium','High','Very High'])
+        Education = st.selectbox('Job Level',['Low', 'Medium','High'])
         if Education == "Low" :
             Education = 1
         elif Education == "Medium":
@@ -211,7 +211,7 @@ def main():
         
         return inp
     
-    df = input_features()
+    input_features = df()
     model = pickle.load(open('model.pkl','rb'))
     ans = model.predict_proba([df])[0][0]
     ans = round(100*ans,2)
