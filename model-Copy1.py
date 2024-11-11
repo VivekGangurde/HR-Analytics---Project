@@ -211,7 +211,7 @@ def main():
         
         return inp
     
-    input_features = df()
+    input_features = inp()
     model = pickle.load(open('model.pkl','rb'))
     ans = model.predict_proba([df])[0][0]
     ans = round(100*ans,2)
