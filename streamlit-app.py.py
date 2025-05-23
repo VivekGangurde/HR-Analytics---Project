@@ -38,7 +38,7 @@ if st.button('Predict'):
         output_ = requests.post(url = 'http://localhost:8000/predict', data = json.dumps(input_data))
     except:
        print('Not able to connect to api server')
-    #output_ = requests.post(url = 'http://localhost:8000/predict', data = json.dumps(input_data))
+    output_ = requests.post(url = 'http://localhost:8000/predict', data = json.dumps(input_data))
     ans = eval(output_.json())
     output = 'Yes' if ans['prediction']==1 else 'No'
     if output == 'Yes':
