@@ -10,4 +10,4 @@ COPY ./Fast API.py ./my-model2 /code/
 
 EXPOSE 8000
 
-CMD ["python", "hr_analytics_api:app", "--host", "0.0.0.0"]
+CMD ["python", "Fast API.py"]
