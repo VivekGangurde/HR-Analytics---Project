@@ -32,7 +32,7 @@ params = [JobSatisfaction, PerformanceRating, StandardHours,
 input_data = dict(zip(names, params))
 
 if st.button('Predict'):
-  
+output_ = None  
     try:
         output_ = requests.post(url = 'http://localhost:8000/predict', data = json.dumps(input_data))
     except:
