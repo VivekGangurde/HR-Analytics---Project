@@ -33,7 +33,6 @@ dask-glm==0.3.2
 dask-ml==2024.4.4
 dask-xgboost==0.2.0
 data-utilities==1.2.10
-datashape==0.5.4
 django-pipeline==3.0.0
 dm-tree==0.1.8
 emoji==2.2.0
