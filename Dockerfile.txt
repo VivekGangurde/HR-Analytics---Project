@@ -6,7 +6,7 @@ COPY requirements.txt /code/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt 
 
-COPY ./hr_analytics_api.py ./my-model2 /code/
+COPY ./Fast API.py ./my-model2 /code/
 
 EXPOSE 8000
 
