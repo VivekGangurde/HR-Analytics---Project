@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: streamlitapp
-        image: sunilkumardash9/streamlit-app:v1
+        image: VivekGangurde/streamlit-app:v1
         imagePullPolicy: Never
 ---
 apiVersion: v1
