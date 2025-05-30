@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: hrapp
-        image: sunilkumardash9/hrapp:v1
+        image: VivekGangurde/hrapp:v1
         imagePullPolicy: Never
 ---
 apiVersion: v1
