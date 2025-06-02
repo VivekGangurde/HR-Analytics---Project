@@ -29,7 +29,7 @@ names = ['JobSatisfaction', 'PerformanceRating', 'StandardHours',
 params = [JobSatisfaction, PerformanceRating, StandardHours,
        Joblevel, YearsAtCompany, WorkLifeBalance,
        YearsSinceLastPromotion, Department, MonthlyIncome]
-input_data = dict(zip(names, params))
+HRData = dict(zip(names, params))
 output_ = None
 
 if st.button('Predict'):
