@@ -36,7 +36,7 @@ if st.button('Predict'):
     try:
         response = requests.post(
             url='http://localhost:127.0.0.1/predict',
-            data=json.dumps(input_data),
+            data=json.dumps(HRData),
             headers={'Content-Type': 'application/json'}
         )
         if response.status_code == 200:
@@ -45,19 +45,19 @@ if st.button('Predict'):
             probability = ans['probability']
 
             if prediction == 'Yes':
-                st.success(f"The employee might leave the company with a probability of {probability * 100:.2f}%")
+                st.success("The employee might leave the company with a probability of {probability * 100:.2f}%")
             else:
-                st.success(f"The employee might not leave the company with a probability of {(1 - probability) * 100:.2f}%")
+                st.success("The employee might not leave the company with a probability of {(1 - probability) * 100:.2f}%")
         else:
-            st.error(f"API returned an error: {response.status_code}")
+            st.error("API returned an error: {response.status_code}")
     except requests.exceptions.RequestException as e:
         st.error("Could not connect to the prediction server.")
         st.error(str(e))
 
     if output == 'Yes':
-        st.success(f"The employee might leave the company with a probability of {(ans['probability'])*100: .2f}")
+        st.success("The employee might leave the company with a probability of {(ans['probability'])*100: .2f}")
     if output == 'No':
-        st.success(f"The employee might not leave the company with a probability of {(1-ans['probability'])*100: .2f}")
+        st.success("The employee might not leave the company with a probability of {(1-ans['probability'])*100: .2f}")
 
 
 
