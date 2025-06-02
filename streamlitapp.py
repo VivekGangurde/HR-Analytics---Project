@@ -53,7 +53,7 @@ if st.button('Predict'):
     except requests.exceptions.RequestException as e:
         st.error("Could not connect to the prediction server.")
         st.error(str(e))
-    output = 'Yes' if ans['prediction']==1 else 'No'
+
     if output == 'Yes':
         st.success(f"The employee might leave the company with a probability of {(ans['probability'])*100: .2f}")
     if output == 'No':
