@@ -34,7 +34,7 @@ output_ = None
 if st.button('Predict'):
     try:
         response = requests.post(
-            url='http://localhost:8000/predict',
+            url='http://localhost:127.0.0.1/predict',
             data=json.dumps(input_data),
             headers={'Content-Type': 'application/json'}
         )
