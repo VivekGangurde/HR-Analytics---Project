@@ -32,13 +32,26 @@ params = [JobSatisfaction, PerformanceRating, StandardHours,
 input_data = dict(zip(names, params))
 output_ = None
 if st.button('Predict'):
-  
     try:
-        output_ = requests.post(url = 'http://localhost:8000/predict', data = json.dumps(input_data))
-    except:
-       print('Not able to connect to api server')
-  
-    ans = eval(output_.json())
+        response = requests.post(
+            url='http://localhost:8000/predict',
+            data=json.dumps(input_data),
+            headers={'Content-Type': 'application/json'}
+        )
+        if response.status_code == 200:
+            ans = response.json()  # Already a dict, no need for eval
+            prediction = 'Yes' if ans['prediction'] == 1 else 'No'
+            probability = ans['probability']
+
+            if prediction == 'Yes':
+                st.success(f"The employee might leave the company with a probability of {probability * 100:.2f}%")
+            else:
+                st.success(f"The employee might not leave the company with a probability of {(1 - probability) * 100:.2f}%")
+        else:
+            st.error(f"API returned an error: {response.status_code}")
+    except requests.exceptions.RequestException as e:
+        st.error("Could not connect to the prediction server.")
+        st.error(str(e))
     output = 'Yes' if ans['prediction']==1 else 'No'
     if output == 'Yes':
         st.success(f"The employee might leave the company with a probability of {(ans['probability'])*100: .2f}")
