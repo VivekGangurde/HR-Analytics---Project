@@ -31,6 +31,7 @@ params = [JobSatisfaction, PerformanceRating, StandardHours,
        YearsSinceLastPromotion, Department, MonthlyIncome]
 input_data = dict(zip(names, params))
 output_ = None
+
 if st.button('Predict'):
     try:
         response = requests.post(
@@ -39,7 +40,7 @@ if st.button('Predict'):
             headers={'Content-Type': 'application/json'}
         )
         if response.status_code == 200:
-            ans = response.json()  # Already a dict, no need for eval
+            ans = response.json()  # Already a dict
             prediction = 'Yes' if ans['prediction'] == 1 else 'No'
             probability = ans['probability']
 
@@ -57,7 +58,7 @@ if st.button('Predict'):
         st.success(f"The employee might leave the company with a probability of {(ans['probability'])*100: .2f}")
     if output == 'No':
         st.success(f"The employee might not leave the company with a probability of {(1-ans['probability'])*100: .2f}")
-# In[ ]:
+
 
 
 
