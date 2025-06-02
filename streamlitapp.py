@@ -35,7 +35,7 @@ if st.button('Predict'):
     try:
         response = requests.post(
             url='http://localhost:8000/predict',
-            data=json.dumps(input_data),
+            json=input_data),
             headers={'Content-Type': 'application/json'}
         )
         if response.status_code == 200:
