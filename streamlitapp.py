@@ -35,7 +35,7 @@ if st.button('Predict'):
     try:
         response = requests.post(
             url='http://localhost:8000/predict',
-            json=input_data),
+            data=json.dumps(input_data),
             headers={'Content-Type': 'application/json'}
         )
         if response.status_code == 200:
@@ -57,8 +57,6 @@ if st.button('Predict'):
         st.success(f"The employee might leave the company with a probability of {(ans['probability'])*100: .2f}")
     if output == 'No':
         st.success(f"The employee might not leave the company with a probability of {(1-ans['probability'])*100: .2f}")
-
-
 # In[ ]:
 
 
