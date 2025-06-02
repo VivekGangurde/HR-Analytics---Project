@@ -45,8 +45,11 @@ def preprocess_input(data: HRData):
     ]])
 
 @app.post("/predict")
-
-{
+def predict():
+    return {
+        "prediction": 1,
+        "probability": 0.85
+    }
   "JobSatisfaction": 0.7,
   "PerformanceRating": 0.8,
   "StandardHours": 40,
