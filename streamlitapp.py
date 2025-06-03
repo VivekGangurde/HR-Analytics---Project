@@ -42,11 +42,11 @@ if st.button('Predict'):
             
             output = 'Yes' if ans['prediction'] == 1 else 'No'
             if output == 'Yes':
-                st.success("The employee might leave the company with a probability of {(ans['probability'])*100:.2f}%")
+                st.success(f"The employee might leave the company with a probability of {(ans['probability'])*100:.2f}%")
             else:
-                st.success("The employee might not leave the company with a probability of {(1 - ans['probability'])*100:.2f}%")
+                st.success(f"The employee might not leave the company with a probability of {(1 - ans['probability'])*100:.2f}%")
         else:
-            st.error("Failed to get a valid response from the server.")
+            st.error(f"Failed to get a valid response from the server.")
             
     except Exception as e:
         st.error("Error connecting to API server: {e}")
