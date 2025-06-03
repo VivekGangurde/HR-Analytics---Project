@@ -33,8 +33,8 @@ input_data = dict(zip(names, params))
 output_ = None
 if st.button('Predict'):
     try:
-        # Use json= instead of data= with json.dumps
-        output_ = requests.post(url='http://localhost:8000/predict', json=input_data)
+        # With your deployed API URL, e.g.:
+        output_ = requests.post(url='https://your-api-host.com/predict', json=input_data)
         
         # Check if request was successful
         if output_ is not None and output_.status_code == 200:
