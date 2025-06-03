@@ -34,7 +34,7 @@ output_ = None
 if st.button('Predict'):
     try:
         # With your deployed API URL, e.g.:
-        output_ = requests.post(url='https://your-api-host.com/predict', json=input_data)
+        output_ = requests.post(url='http://127.0.0.1:8000/predict', json=input_data)
         
         # Check if request was successful
         if output_ is not None and output_.status_code == 200:
