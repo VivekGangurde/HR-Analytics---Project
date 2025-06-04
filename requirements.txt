@@ -8,3 +8,4 @@ scikit-learn
 numpy
 joblib
 fastapi
+uvicorn[standard]
