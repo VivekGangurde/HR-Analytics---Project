@@ -1,11 +1,10 @@
 pandas
-streamlit
-streamlit-extras
-st-pages
-pymongo
-uvicorn
-scikit-learn
 numpy
 joblib
+scikit-learn
+xgboost
 fastapi
 uvicorn[standard]
+
+
+
