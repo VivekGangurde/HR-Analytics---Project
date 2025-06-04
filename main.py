@@ -5,11 +5,13 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
 import uvicorn
+import xgboost as xgb
 
 app = FastAPI()
 
 # Load model
-model = joblib.load("model1.pkl")
+model = xgb.XGBClassifier()
+model.load_model("model1.json")
 
 # Define input schema
 class HRData(BaseModel):
