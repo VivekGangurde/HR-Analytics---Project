@@ -46,7 +46,7 @@ input_data = {
 if st.button("Predict"):
     with st.spinner("Predicting..."):
         try:
-            response = requests.post("https://hr-backend.onrender.com/predict", json=input_data)
+            response = requests.post("https://hr-analytics-backend.onrender.com", json=input_data)
             if response.status_code == 200:
                 result = response.json()
                 prediction = "Yes" if result["prediction"] == 1 else "No"
