@@ -51,7 +51,7 @@ if st.button("Predict"):
         input_data["OverTime"] = {"No": 0, "Yes": 1}[input_data["OverTime"]]
 
         try:
-            response = requests.post("https://hr-analytics-backend.onrender.com", json=input_data)
+            response = requests.post("https://hr-analytics-backend.onrender.com/predict", json=input_data)
             if response.status_code == 200:
                 result = response.json()
                 prediction = "Yes" if result["prediction"] == 1 else "No"
