@@ -3,8 +3,8 @@ services:
     name: hr-backend
     env: python
     plan: free
-    buildCommand: pip install -r Backend/requirements.txt
-    startCommand: gunicorn main:app
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
     workingDir: Backend
     autoDeploy: true
 
@@ -12,7 +12,7 @@ services:
     name: hr-frontend
     env: python
     plan: free
-    buildCommand: pip install -r FrontEnd/requirements.txt
-    startCommand: streamlit run streamlitapp.py --server.port=10000
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run streamlitapp.py --server.port=10001 --server.address=0.0.0.0
     workingDir: FrontEnd
     autoDeploy: true
