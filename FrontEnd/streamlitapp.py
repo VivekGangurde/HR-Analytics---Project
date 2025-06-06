@@ -52,12 +52,17 @@ if st.button("Predict"):
 
         try:
             response = requests.post("https://hr-analytics-backend.onrender.com/predict", json=input_data)
-            if response.status_code == 200:
-                result = response.json()
-                prediction = "Yes" if result["prediction"] == 1 else "No"
-                probability = result["probability"] * 100
-                st.success(f"Prediction: {prediction} — Probability: {probability:.2f}%")
+            response.raise_for_status()  # Will raise error for non-200 responses
+            result = response.json()
+
+            output = 'Yes' if result['prediction'] == 1 else 'No'
+
+            if output == 'Yes':
+                st.success(f"The employee might leave the company with a probability of {(result['probability']) * 100:.2f}%")
             else:
-                st.error("API returned an error.")
+                st.success(f"The employee might not leave the company with a probability of {(1 - result['probability']) * 100:.2f}%")
+
+        except requests.exceptions.ConnectionError:
+            st.error("❌ Could not connect to the API server. Please ensure it's running.")
         except Exception as e:
-            st.error(f"Error contacting API: {e}")
+            st.error(f"❌ Error contacting API: {e}")
