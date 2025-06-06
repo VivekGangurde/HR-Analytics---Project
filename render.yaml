@@ -1,6 +1,18 @@
 services:
   - type: web
-    name: hr-analytics-api
-    runtime: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    name: hr-backend
+    env: python
+    plan: free
+    buildCommand: pip install -r Backend/requirements.txt
+    startCommand: gunicorn main:app
+    workingDir: Backend
+    autoDeploy: true
+
+  - type: web
+    name: hr-frontend
+    env: python
+    plan: free
+    buildCommand: pip install -r FrontEnd/requirements.txt
+    startCommand: streamlit run streamlitapp.py --server.port=10000
+    workingDir: FrontEnd
+    autoDeploy: true
