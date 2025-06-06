@@ -47,7 +47,7 @@ if st.button("Predict"):
     with st.spinner("Predicting..."):
         try:
             API_URL = "https://hr-backend.onrender.com/predict"  # Change this to your actual backend URL on Render
-            response = requests.post(API_URL, json=input_data)
+           response = requests.post("https://hr-backend.onrender.com/predict", json=input_data)
             
             if response.status_code == 200:
                 result = response.json()
