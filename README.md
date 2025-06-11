@@ -15,6 +15,6 @@ Achieved good accuracy on the 'IBM HR Analytics Employee Attrition & Performance
 
 Dataset Link - IBM HR Analytics Employee Attrition & Performance
 
-Made a WEB API using Flask framework and deployed it on Heroku cloud platform. Below is the link to access the API.
+Made a WEB API using FAST framework and deployed it on Streamlit cloud platform. Below is the link to access the API.
 
 Web API - Employee Attrition
