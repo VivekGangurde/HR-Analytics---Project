@@ -1,5 +1,5 @@
 # HR-Analytics---Project
-![Image](office.jpg)
+![Image](office2.png)
 
 Attrition is the silent killer that can switly disable even the most successful and stable of the organizations in a shockingly spare amount of time. Hiring new employees are extremely complex task that requires capital, time and skills.Also new employee costs a lot more than that Persons salary.
 
@@ -17,4 +17,4 @@ Dataset Link - IBM HR Analytics Employee Attrition & Performance
 
 Made a WEB API using FAST framework and deployed it on Streamlit cloud platform. Below is the link to access the API.
 
-Web API - Employee Attrition
+Web API(https://hr-analytics-project.onrender.com/) - Employee Attrition
