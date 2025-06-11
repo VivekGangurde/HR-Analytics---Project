@@ -1,5 +1,5 @@
 # HR-Analytics---Project
-![Image](https://www.shutterstock.com/image-vector/vector-illustration-people-working-office-251290072)
+![Image](office.jpg)
 
 Attrition is the silent killer that can switly disable even the most successful and stable of the organizations in a shockingly spare amount of time. Hiring new employees are extremely complex task that requires capital, time and skills.Also new employee costs a lot more than that Persons salary.
 
