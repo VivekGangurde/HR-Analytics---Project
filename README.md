@@ -20,6 +20,5 @@ Made a WEB API using FASTAPI framework and deployed it on Streamlit cloud platfo
 [Web API ](https://hr-analytics-project.onrender.com/) - Employee Attrition
 
 
-Demo(HR-Analytics---Project
-/Streamlit.gif)
+[Demo](Streamlit.gif)
 
