@@ -18,6 +18,8 @@ Dataset Link - IBM HR Analytics Employee Attrition & Performance
 Made a WEB API using FASTAPI framework and deployed it on Streamlit cloud platform. Below is the link to access the API.
 
 [Web API ](https://hr-analytics-project.onrender.com/) - Employee Attrition
-![Demo](HR-Analytics---Project
-/Streamlit.gif
-)
+
+
+Demo(HR-Analytics---Project
+/Streamlit.gif)
+
