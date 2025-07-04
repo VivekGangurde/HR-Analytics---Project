@@ -5,12 +5,23 @@ import time
 st.title("HR Analytics App")
 st.header("Enter Employee Data")
 
-# Session state for button disabling
 if "disabled" not in st.session_state:
     st.session_state["disabled"] = False
 
 def disable_button():
     st.session_state["disabled"] = True
+
+# 💡 ✅ Define this first
+def post_with_retry(url, json, retries=3, wait=3):
+    for attempt in range(retries):
+        response = requests.post(url, json=json)
+        if response.status_code == 429:
+            st.warning("⚠️ Rate limited by server. Retrying...")
+            time.sleep(wait)
+            continue
+        response.raise_for_status()
+        return response
+    raise Exception("Too many retries. Please wait and try again later.")
 
 # Collect inputs
 input_data = {
@@ -45,21 +56,8 @@ input_data = {
     "YearsWithCurrManager": st.number_input("Years With Current Manager", min_value=0)
 }
 
-# Retry helper
-def post_with_retry(url, json, retries=3, wait=3):
-    for attempt in range(retries):
-        response = requests.post(url, json=json)
-        if response.status_code == 429:
-            st.warning("⚠️ Rate limited by server. Retrying...")
-            time.sleep(wait)
-            continue
-        response.raise_for_status()
-        return response
-    raise Exception("Too many retries. Please wait and try again later.")
-
 if st.button("Predict", on_click=disable_button, disabled=st.session_state["disabled"]):
     with st.spinner("Predicting..."):
-        # Encoding
         input_data["BusinessTravel"] = {"Travel_Rarely": 0, "Travel_Frequently": 1, "Non-Travel": 2}[input_data["BusinessTravel"]]
         input_data["Department"] = {"Human Resources": 0, "Research & Development": 1, "Sales": 2}[input_data["Department"]]
         input_data["EducationField"] = {"Life Sciences": 0, "Medical": 1, "Marketing": 2, "Technical Degree": 3, "Human Resources": 4, "Other": 5}[input_data["EducationField"]]
