@@ -1,10 +1,18 @@
 import streamlit as st
 import requests
+import time
 
 st.title("HR Analytics App")
 st.header("Enter Employee Data")
 
-# Collect all required inputs
+# Session state for button disabling
+if "disabled" not in st.session_state:
+    st.session_state["disabled"] = False
+
+def disable_button():
+    st.session_state["disabled"] = True
+
+# Collect inputs
 input_data = {
     "Age": st.number_input("Age", min_value=18, max_value=60),
     "BusinessTravel": st.selectbox("Business Travel", ["Travel_Rarely", "Travel_Frequently", "Non-Travel"]),
@@ -37,22 +45,31 @@ input_data = {
     "YearsWithCurrManager": st.number_input("Years With Current Manager", min_value=0)
 }
 
-if st.button("Predict"):
+# Retry helper
+def post_with_retry(url, json, retries=3, wait=3):
+    for attempt in range(retries):
+        response = requests.post(url, json=json)
+        if response.status_code == 429:
+            st.warning("⚠️ Rate limited by server. Retrying...")
+            time.sleep(wait)
+            continue
+        response.raise_for_status()
+        return response
+    raise Exception("Too many retries. Please wait and try again later.")
+
+if st.button("Predict", on_click=disable_button, disabled=st.session_state["disabled"]):
     with st.spinner("Predicting..."):
-        # Manual encoding
+        # Encoding
         input_data["BusinessTravel"] = {"Travel_Rarely": 0, "Travel_Frequently": 1, "Non-Travel": 2}[input_data["BusinessTravel"]]
         input_data["Department"] = {"Human Resources": 0, "Research & Development": 1, "Sales": 2}[input_data["Department"]]
         input_data["EducationField"] = {"Life Sciences": 0, "Medical": 1, "Marketing": 2, "Technical Degree": 3, "Human Resources": 4, "Other": 5}[input_data["EducationField"]]
         input_data["Gender"] = {"Male": 0, "Female": 1}[input_data["Gender"]]
-        input_data["JobRole"] = {"Sales Executive": 0, "Research Scientist": 1, "Laboratory Technician": 2,
-                                 "Manufacturing Director": 3, "Healthcare Representative": 4, "Manager": 5,
-                                 "Sales Representative": 6, "Research Director": 7, "Human Resources": 8}[input_data["JobRole"]]
+        input_data["JobRole"] = {"Sales Executive": 0, "Research Scientist": 1, "Laboratory Technician": 2, "Manufacturing Director": 3, "Healthcare Representative": 4, "Manager": 5, "Sales Representative": 6, "Research Director": 7, "Human Resources": 8}[input_data["JobRole"]]
         input_data["MaritalStatus"] = {"Single": 0, "Married": 1, "Divorced": 2}[input_data["MaritalStatus"]]
         input_data["OverTime"] = {"No": 0, "Yes": 1}[input_data["OverTime"]]
 
         try:
             response = post_with_retry("https://hr-analytics-backend.onrender.com/predict", json=input_data)
-            response.raise_for_status()  # Will raise error for non-200 responses
             result = response.json()
 
             output = 'Yes' if result['prediction'] == 1 else 'No'
@@ -64,7 +81,9 @@ if st.button("Predict"):
 
         except requests.exceptions.ConnectionError:
             st.error("❌ Could not connect to the API server. Please ensure it's running.")
+        except requests.exceptions.Timeout:
+            st.error("❌ The request timed out. Please try again later.")
         except Exception as e:
             st.error(f"❌ Error contacting API: {e}")
-
-
+        finally:
+            st.session_state["disabled"] = False
