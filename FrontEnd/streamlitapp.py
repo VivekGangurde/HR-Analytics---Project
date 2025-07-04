@@ -51,7 +51,7 @@ if st.button("Predict"):
         input_data["OverTime"] = {"No": 0, "Yes": 1}[input_data["OverTime"]]
 
         try:
-            response = requests.post("https://hr-analytics-backend.onrender.com/predict", json=input_data)
+            response = post_with_retry("https://hr-analytics-backend.onrender.com/predict", json=input_data)
             response.raise_for_status()  # Will raise error for non-200 responses
             result = response.json()
 
