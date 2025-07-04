@@ -67,26 +67,4 @@ if st.button("Predict"):
         except Exception as e:
             st.error(f"❌ Error contacting API: {e}")
 
-import time
-import requests
 
-def call_api_with_retry(url, data, retries=3, wait=5):
-    for i in range(retries):
-        try:
-            response = requests.post(url, json=data)
-            if response.status_code == 429:
-                print("Rate limited. Waiting...")
-                time.sleep(wait)
-                continue
-            response.raise_for_status()
-            return response.json()
-        except requests.exceptions.HTTPError as err:
-            print(f"HTTP error: {err}")
-            if i == retries - 1:
-                raise
-            time.sleep(wait)
-    raise Exception("Max retries exceeded")
-
-# Example usage
-result = call_api_with_retry("https://hr-analytics-backend.onrender.com/predict", data={"example": "value"})
-print(result)
